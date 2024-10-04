@@ -1,36 +1,51 @@
 <template>
-  <div
-    class="hero md:h-[45vh] lg:h-[30vh]"
-    v-for="(card, index) in cardEvents"
-    :key="index"
-  >
-    <div class="hero-content flex-col lg:flex-row -z-10 sm:w-[70%] md:w-[90%]">
+  <div class="card">
+    <div class="card2">
       <img
-        :src="card.image"
-        class="max-w-sm rounded-lg shadow-2xl object-cover h-40 w-72 col-span-1 bg-center"
+        :src="image"
+        alt="Project Image"
+        class="text-white h-[350px] rounded-md"
+        width="460px"
       />
-      <div class="ml-16 mb-10 relative z-20">
-        <h1 class="text-2xl font-bold mt-5">{{ card.title }}</h1>
-        <p class="py-6">
-          {{ card.para }}
-        </p>
-        <a :href="card.url" target="_blank">
-          <button class="btn bg-purple-700 text-white border-none btn-sm">
-            Demo
-          </button>
-        </a>
-      </div>
     </div>
   </div>
 </template>
-
 <script setup>
 defineProps({
-  cardEvents: {
-    type: Array,
-    required: true,
+  image: {
+    type: String,
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+  width: 100%;
+  max-width: 460px;
+  height: 350px;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 10px;
+  transition: all 0.3s;
+  box-shadow: 0px 0px 10px 0px rgba(0, 255, 117, 0.3);
+}
+
+.card2 {
+  width: 100%;
+  max-width: 460px;
+  height: 350px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  transition: all 0.2s;
+}
+
+.card2:hover {
+  transform: scale(0.98);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+  border-radius: 10px;
+}
+</style>

@@ -1,9 +1,11 @@
 <template>
-  <div class="flex flex-col items-center px-4 py-24">
+  <div class="flex flex-col items-center px-4 py-24"> 
     <section class="w-[90%] md:max-w-md xl:max-w-2xl mx-auto -z-10">
-      <div
+      <span v-if="loading" class="loading loading-spinner text-primary relative left-[48.5%] w-8"></span>
+      <div v-else
         class="group relative flex size-full overflow-hidden rounded-xl bg-white-100 dark:bg-neutral-900 text-black-800 dark:text-white shadow-2xl p-5 border border-purple-500"
       >
+
         <div>
           <h1 class="text-purple-500 text-2xl">Hey</h1>
           <p class="mt-3">
@@ -66,7 +68,19 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted } from "vue";
+
+const loading = ref(true);
+onMounted(()=>{
+  setTimeout(() =>{
+  loading.value = false;
+},1000)
+})
+
+
+
+</script>
 
 <style scoped>
 h2 {
@@ -76,7 +90,9 @@ h2 {
   line-height: 2rem;
   font-weight: 500;
 }
+
 p {
   margin-top: 1rem;
 }
+
 </style>
